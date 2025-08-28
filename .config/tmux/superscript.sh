@@ -1,20 +1,39 @@
 #!/usr/bin/env bash
-superscript_digit() {
-    case "$1" in
-        0) printf "⁰" ;;
-        1) printf "¹" ;;
-        2) printf "²" ;;
-        3) printf "³" ;;
-        4) printf "⁴" ;;
-        5) printf "⁵" ;;
-        6) printf "⁶" ;;
-        7) printf "⁷" ;;
-        8) printf "⁸" ;;
-        9) printf "⁹" ;;
-    esac
-}
 
-# Convert each digit
-for (( i=0; i<${#1}; i++ )); do
-    superscript_digit "${1:$i:1}"
-done
+# First argument is the number, second (optional) is the style
+NUMBER="$1"
+STYLE="${2:-1}"  # Default to style 1 (filled)
+
+# Style 1: Filled circles (nf-md-numeric_#_circle)
+# Style 2: Outline circles (nf-md-numeric_#_circle_outline)
+
+if [ "$STYLE" = "1" ]; then
+    # Filled circles
+    case "$NUMBER" in
+        0) printf '󰼎 ' ;;  # 
+        1) printf '󰼏 ' ;;  # 
+        2) printf '󰼐 ' ;;  # 
+        3) printf '󰼑 ' ;;  # 
+        4) printf '󰼒 ' ;;  # 
+        5) printf '󰼓 ' ;;  # 
+        6) printf '󰼔 ' ;;  # 
+        7) printf '󰼕 ' ;;  # 
+        8) printf '󰼖 ' ;;  # 
+        9) printf '󰼗 ' ;; 
+        *) printf "$NUMBER" ;;  # fallback
+    esac
+else
+    # Outline circles
+    case "$NUMBER" in
+        0) printf '\uf0ca1' ;;  # 
+        1) printf '\uf0ca3' ;;  # 
+        2) printf '\uf0ca5' ;;  # 
+        3) printf '\uf0ca7' ;;  # 
+        4) printf '\uf0ca9' ;;  # 
+        5) printf '\uf0cab' ;;  # 
+        6) printf '\uf0cad' ;;  # 
+        7) printf '\uf0caf' ;;  # 
+        8) printf '\uf0cb1' ;;  # 
+        *) printf "$NUMBER" ;;  # fallback
+    esac
+fi
