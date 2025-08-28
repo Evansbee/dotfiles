@@ -114,3 +114,5 @@ alias n="nvim"
 alias vim="nvim"
 alias ls="eza --icons=always --group-directories-first -h"
 eval "$(starship init zsh)"
+
+. "$HOME/.local/share/../bin/env"
