@@ -46,4 +46,8 @@ return {
       fzf_directories({})
     end, {})
   end,
+  keys = {
+    { "<leader>ff",function() require('fzf-lua').files() end,desc="Fzf Fuzzy Find Files" },
+    { "<leader>fg",function() require('fzf-lua').live_grep() end, desc="Fzf Grep Find Files" },
+  },
 }
